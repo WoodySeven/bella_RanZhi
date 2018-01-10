@@ -2,9 +2,9 @@
 import unittest
 import time
 from selenium import webdriver
+import random
 
-
-class RanZhiLoginLogout(unittest.TestCase):
+class CashAccount(unittest.TestCase):
     """
     演示的是RanZhi的登录和退出
     数据驱动，相同的逻辑使用不同的数据去运行。
@@ -29,8 +29,8 @@ class RanZhiLoginLogout(unittest.TestCase):
         driver.find_element_by_id("submit").click()
         driver.find_element_by_id("submit").click()
         time.sleep(3)
-
-
-
-if __name__ == '__main__':
-    unittest.main()
+        ##现金记账
+        driver.find_element_by_xpath("//*[@id=\"s-menu-allapps\"]/button").click()
+        time.sleep(3)
+        driver.find_element_by_link_text('//*[@id="s-applist-4"]/a').click()
+        time.sleep(5)

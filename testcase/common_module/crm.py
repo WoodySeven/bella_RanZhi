@@ -4,7 +4,7 @@ import time
 from selenium import webdriver
 import random
 
-class RanZhi(unittest.TestCase):
+class Crm_test(unittest.TestCase):
     """
     演示的是RanZhi新建客户、新建产品
     """
@@ -16,13 +16,6 @@ class RanZhi(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
-    def GBK2312(self):
-        head = random.randint(0xb0, 0xf7)
-        body = random.randint(0xa1, 0xfe)
-        val = f'{head:x}{body:x}'
-        str = bytes.fromhex(val).decode('gb2312')
-
 
     def test_user_login_test(self):
         """admin的登录的所有测试用例,新建客户、新建产品"""
@@ -78,13 +71,22 @@ class RanZhi(unittest.TestCase):
         driver.find_element_by_id("status").click()
         driver.find_element_by_xpath('//*[@id="status"]/option[2]').click()
         driver.find_element_by_id('submit').click()
-        time.sleep(10)
-        # driver.find_element_by_xpath('//*[@id="block1"]/div[1]/div/a').click()
-        # time.sleep(3)
-        # driver.switch_to.parent_frame()
-        # driver.switch_to.frame('iframe-dashboard')
-        # driver.find_element_by_xpath('//*[@id="menuActions"]/a').click()
-        # time.sleep(3)
+        time.sleep(3)
+        ##新增订单
+        driver.find_element_by_link_text("订单").click()
+        time.sleep(5)
+        driver.find_element_by_xpath('//*[@id="menuActions"]/a').click()
+        driver.find_element_by_xpath('//*[@id="customer_chosen"]/a').click()
+        driver.find_element_by_xpath('//*[@id="customer_chosen"]/div/ul/li[3]').click()
+        time.sleep(2)
+        driver.find_element_by_xpath('//*[@id="product_chosen"]/ul').click()
+        time.sleep(3)
+        driver.find_element_by_xpath('//*[@id="product_chosen"]/div/ul/li[3]').click()
+        driver.find_element_by_id('plan').send_keys(random.randint(2123,6454))
+        time.sleep(5)
+        driver.find_element_by_id('submit').click()
+        time.sleep(5)
+
 
 
 if __name__ == '__main__':

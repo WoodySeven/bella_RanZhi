@@ -6,7 +6,7 @@ import traceback
 from lib import HTMLTestRunner
 import time
 
-from testcase.common_module import test_main
+from testcase.common_module import crm
 
 if __name__ == '__main__':
         logger = Logger('./log/logger.log', logging.INFO)
