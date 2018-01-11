@@ -3,8 +3,16 @@ import unittest
 import time
 from selenium import webdriver
 import random
+import ddt
+import logging
+from lib.utils import capture_screen
 
-class Crm_test(unittest.TestCase):
+test_data = [['', '123456', '用户名不存在'],
+             ['invalid', '123456', '用户名不存在'],
+             ['admin', '123456', '退出']]
+
+@ddt.ddt
+class Crm(unittest.TestCase):
     """
     演示的是RanZhi新建客户、新建产品
     """
@@ -17,14 +25,17 @@ class Crm_test(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_user_login_test(self):
+    @ddt.unpack
+    @ddt.data(*test_data)
+    def test_user_login_test(self, admin, password, flag):
         """admin的登录的所有测试用例,新建客户、新建产品"""
+        logging.info("test_admin_login_test start....")
         driver = self.driver
         driver.get(self.base_url)
         driver.find_element_by_id("account").clear()
-        driver.find_element_by_id("account").send_keys("admin")
+        driver.find_element_by_id("account").send_keys(admin)
         driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys("123456")
+        driver.find_element_by_id("password").send_keys(password)
         driver.find_element_by_id("submit").click()
         driver.find_element_by_id("submit").click()
         time.sleep(3)
@@ -86,7 +97,14 @@ class Crm_test(unittest.TestCase):
         time.sleep(5)
         driver.find_element_by_id('submit').click()
         time.sleep(5)
-
+        self.assertIn(flag, driver.page_source)
+        logging.info("test data is : {}, {}, {}".format(admin, password, flag))
+        pic_path = capture_screen(driver)
+        if pic_path is None:
+            logging.error("截图不成功")
+        else:
+            logging.info(pic_path)
+        logging.info("test_admin_login_test end....")
 
 
 if __name__ == '__main__':

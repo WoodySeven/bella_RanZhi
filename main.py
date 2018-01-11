@@ -5,8 +5,8 @@ from lib.Logger import Logger
 import traceback
 from lib import HTMLTestRunner
 import time
-
-from testcase.common_module import crm
+from testcase.common_module.crm import Crm
+from testcase.common_module.accounting import CashAccount
 
 if __name__ == '__main__':
         logger = Logger('./log/logger.log', logging.INFO)
@@ -14,13 +14,14 @@ if __name__ == '__main__':
         try:
             suite = unittest.TestSuite()  # 新建一个suite，测试套件
             loader = unittest.TestLoader()  # 新建一个加载器，自定义的方式把测试用例加载到suite里
-            suite.addTests(loader.loadTestsFromTestCase(Bugfree管理员登录退出))# 把测试类所有的方法都加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(Crm))# 把测试类所有的方法都加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(CashAccount))
             # unittest.TextTestRunner(verbosity=2).run(suite) # unittest运行suite
-            fp = open('reports/report_bugfree_{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
+            fp = open('reports/ranzhi{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
             runner = HTMLTestRunner.HTMLTestRunner(
                 stream=fp,
-                title='Bugfree的测试报告',
-                description='Bugfree的所有测试用例执行细节'
+                title='ranzhi的测试报告',
+                description='ranzhi的所有测试用例执行细节'
             )
             runner.run(suite)
             logging.info("测试顺利结束^_^ ")
