@@ -1,0 +1,24 @@
+2018-01-12 16:47:07,686 - main.py:17 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-01-12 16:47:16,706 - create_new_clients.py:21 - INFO - create_new_clients - setUp - 打开浏览器成功
+2018-01-12 16:47:16,706 - create_new_clients.py:30 - INFO - create_new_clients - test_create_new_clients - test_create_new_clients start....
+2018-01-12 16:47:22,895 - create_new_clients.py:43 - INFO - create_new_clients - test_create_new_clients - admin用户登陆失败
+2018-01-12 16:47:34,476 - create_new_clients.py:55 - INFO - create_new_clients - test_create_new_clients - iframe层切换失败
+2018-01-12 16:47:46,921 - create_new_clients.py:74 - INFO - create_new_clients - test_create_new_clients - test data is : admin,123456
+2018-01-12 16:47:47,225 - create_new_clients.py:79 - INFO - create_new_clients - test_create_new_clients - ./screenshots/mypic_2018-01-12 16-47-46.png
+2018-01-12 16:47:47,226 - create_new_clients.py:80 - INFO - create_new_clients - test_create_new_clients - test_create_new_clients end....
+2018-01-12 16:47:50,312 - create_new_clients.py:26 - INFO - create_new_clients - tearDown - 关闭浏览器成功
+2018-01-12 16:47:56,453 - create_new_product.py:21 - INFO - create_new_product - setUp - 打开浏览器成功
+2018-01-12 16:47:56,453 - create_new_product.py:30 - INFO - create_new_product - test_create_new_products - test_create_new_products start....
+2018-01-12 16:48:05,563 - create_new_product.py:43 - INFO - create_new_product - test_create_new_products - admin用户登陆失败
+2018-01-12 16:48:17,117 - create_new_product.py:55 - INFO - create_new_product - test_create_new_products - iframe层切换失败
+2018-01-12 16:48:35,984 - create_new_product.py:73 - INFO - create_new_product - test_create_new_products - test data is : admin,123456
+2018-01-12 16:48:36,286 - create_new_product.py:78 - INFO - create_new_product - test_create_new_products - ./screenshots/mypic_2018-01-12 16-48-35.png
+2018-01-12 16:48:36,286 - create_new_product.py:79 - INFO - create_new_product - test_create_new_products - test_create_new_products end....
+2018-01-12 16:48:39,398 - create_new_product.py:26 - INFO - create_new_product - tearDown - 关闭浏览器成功
+2018-01-12 16:48:45,396 - create_new_order.py:26 - INFO - create_new_order - test_create_new_order - test_create_new_order start....
+2018-01-12 16:48:54,476 - create_new_order.py:39 - INFO - create_new_order - test_create_new_order - admin用户登陆失败
+2018-01-12 16:49:01,087 - create_new_order.py:50 - INFO - create_new_order - test_create_new_order - iframe层切换失败
+2018-01-12 16:49:27,751 - create_new_order.py:66 - INFO - create_new_order - test_create_new_order - test data is : admin,123456
+2018-01-12 16:49:28,129 - create_new_order.py:71 - INFO - create_new_order - test_create_new_order - ./screenshots/mypic_2018-01-12 16-49-27.png
+2018-01-12 16:49:28,129 - create_new_order.py:72 - INFO - create_new_order - test_create_new_order - ttest_create_new_order end....
+2018-01-12 16:49:31,252 - main.py:36 - INFO - main - <module> - 测试顺利结束^_^ 

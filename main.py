@@ -5,8 +5,15 @@ from lib.Logger import Logger
 import traceback
 from lib import HTMLTestRunner
 import time
-from testcase.common_module.crm import Crm
-from testcase.common_module.accounting import CashAccount
+from testcase.common_module.login_logout import Login
+from testcase.common_module.create_new_clients import CreateNewClients
+from testcase.common_module.create_new_product import CreateNewProduct
+from testcase.common_module.create_new_order import CreateNewOrder
+from testcase.common_module.create_member import CreateMember
+from testcase.common_module.disable_activation import DisableActivation
+from testcase.common_module.cash_expenditure import CashExpenditure
+from testcase.common_module.cash_income import CashIncome
+
 
 if __name__ == '__main__':
         logger = Logger('./log/logger.log', logging.INFO)
@@ -14,8 +21,15 @@ if __name__ == '__main__':
         try:
             suite = unittest.TestSuite()  # 新建一个suite，测试套件
             loader = unittest.TestLoader()  # 新建一个加载器，自定义的方式把测试用例加载到suite里
-            suite.addTests(loader.loadTestsFromTestCase(Crm))# 把测试类所有的方法都加载到suite里
-            suite.addTests(loader.loadTestsFromTestCase(CashAccount))
+            suite.addTests(loader.loadTestsFromTestCase(Login))#把测试类登陆方法加载到suite里
+            time.sleep(3)
+            suite.addTests(loader.loadTestsFromTestCase(CreateNewClients))#把测试类新增客户方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(CreateNewProduct))#把测试类新增产品方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(CreateNewOrder))#把测试类新增订单方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(CreateMember))#把测试类新加成员方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(DisableActivation))# 把测试类禁用、激活成员方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(CashExpenditure))#把测试类现金记账支出方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(CashIncome))#把测试类现金记账收入方法加载到suite里
             # unittest.TextTestRunner(verbosity=2).run(suite) # unittest运行suite
             fp = open('reports/ranzhi{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
             runner = HTMLTestRunner.HTMLTestRunner(
