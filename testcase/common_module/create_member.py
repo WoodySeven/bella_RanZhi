@@ -35,7 +35,6 @@ class CreateMember(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys("123456")
         driver.find_element_by_id("submit").click()
-        driver.find_element_by_id("submit").click()
         time.sleep(3)
         ##点击后台管理
         driver.find_element_by_xpath('//*[@id="s-menu-superadmin"]/button').click()

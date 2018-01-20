@@ -36,7 +36,11 @@ class Login(unittest.TestCase):
         logging.info("test_admin_login_test start....")
         driver = self.driver
         driver.get(ADMIN_PAGE)
-        login_by_admin(driver)
+        driver.find_element_by_id("account").clear()
+        driver.find_element_by_id("account").send_keys(admin)
+        driver.find_element_by_id("password").clear()
+        driver.find_element_by_id("password").send_keys(password)
+        driver.find_element_by_id("submit").click()
         time.sleep(3)
         self.assertIn(flag, driver.page_source)
         logging.info("test data is : {}, {}, {}".format(admin, password, flag))
