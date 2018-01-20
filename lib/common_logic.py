@@ -22,6 +22,13 @@ def login_by_admin(driver):
     driver.find_element_by_id("submit").click()
     time.sleep(3)
 
+
+def click_backend_management(driver):
+    """点击后台管理"""
+    driver.find_element_by_xpath('//*[@id="s-menu-superadmin"]/button').click()
+    time.sleep(2)
+
+
 def click_all_apps(driver):
     """点击所有应用"""
     driver.find_element_by_xpath("//*[@id=\"s-menu-allapps\"]/button").click()
@@ -68,3 +75,31 @@ def add_customer(driver):
     driver.find_element_by_id("submit").click()  ##点击保存
     time.sleep(3)
     return {"name": name, "phone": phone}
+
+
+def add_member(driver):
+    """添加成员"""
+    ##进入ifarme
+    switch_to_frame(driver, 'iframe-superadmin')
+    #点击添加成员按钮
+    driver.find_element_by_xpath('//*[@id="shortcutBox"]/div/div[1]/div/a/h3').click()
+
+    name = get_random_customer_name()
+    email = "{}@qq.com".format(name)
+
+    ##用户名
+    driver.find_element_by_id('account').send_keys(name)
+    ##真实姓名
+    driver.find_element_by_id('realname').send_keys(name)
+    driver.find_element_by_id('gender2').click()  ##选择性别
+    driver.find_element_by_id('dept').click()  ##选择部门
+    driver.find_element_by_xpath('//*[@id="dept"]/option[2]').click()
+    driver.find_element_by_id('role').click()  ##选择角色
+    driver.find_element_by_xpath('//*[@id="role"]/option[3]').click()
+    driver.find_element_by_id('password1').send_keys('123456')  ##输入密码
+    driver.find_element_by_id('password2').send_keys('123456')  ##再一次输入密码
+    ##输入邮箱
+    driver.find_element_by_id('email').send_keys(email)
+    driver.find_element_by_id('submit').click()  ##点击保存
+    time.sleep(6)
+    return {"name": name, "email": email}

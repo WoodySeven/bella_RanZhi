@@ -15,3 +15,31 @@
 2018-01-20 15:23:05,245 - common_logic.py:49 - INFO - common_logic - add_customer - test data is : name customer_7717,phone 18665204088, email customer_7717@qq.com
 2018-01-20 15:23:23,471 - create_new_clients.py:24 - INFO - create_new_clients - tearDown - 关闭浏览器成功
 2018-01-20 15:23:23,486 - main.py:46 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-01-20 15:59:32,843 - main.py:21 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-01-20 15:59:34,883 - create_member.py:18 - INFO - create_member - setUp - 打开浏览器成功
+2018-01-20 15:59:34,887 - create_member.py:33 - INFO - create_member - test_create_member - test_create_member start....
+2018-01-20 15:59:56,621 - create_member.py:39 - INFO - create_member - test_create_member - test data is : admin,123456
+2018-01-20 15:59:56,965 - create_member.py:41 - INFO - create_member - test_create_member - test_create_member end....
+2018-01-20 15:59:58,213 - create_member.py:23 - INFO - create_member - tearDown - 关闭浏览器成功
+2018-01-20 15:59:58,236 - main.py:46 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-01-20 16:02:34,023 - main.py:21 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-01-20 16:02:36,536 - create_member.py:13 - INFO - create_member - setUp - 打开浏览器成功
+2018-01-20 16:02:36,540 - create_member.py:28 - INFO - create_member - test_create_member - test_create_member start....
+2018-01-20 16:02:57,774 - create_member.py:34 - INFO - create_member - test_create_member - test data is : admin,123456
+2018-01-20 16:02:58,167 - create_member.py:38 - INFO - create_member - test_create_member - test_create_member end....
+2018-01-20 16:02:59,416 - create_member.py:18 - INFO - create_member - tearDown - 关闭浏览器成功
+2018-01-20 16:02:59,438 - main.py:46 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-01-20 16:38:23,634 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-01-20 16:38:25,911 - test_add_customer.py:15 - INFO - test_add_customer - setUp - 打开浏览器成功
+2018-01-20 16:38:45,213 - test_add_customer.py:20 - INFO - test_add_customer - tearDown - 关闭浏览器成功
+2018-01-20 16:38:45,232 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-01-20 16:45:21,338 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-01-20 16:45:23,201 - test_add_customer.py:15 - INFO - test_add_customer - setUp - 打开浏览器成功
+2018-01-20 16:45:35,267 - crm_add_customer_page.py:31 - INFO - crm_add_customer_page - input_all_info - test data is : name customer_5161,phone 13216497713, email customer_5161@qq.com
+2018-01-20 16:45:52,682 - test_add_customer.py:20 - INFO - test_add_customer - tearDown - 关闭浏览器成功
+2018-01-20 16:45:52,698 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-01-20 16:51:09,886 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-01-20 16:51:12,143 - test_add_customer.py:15 - INFO - test_add_customer - setUp - 打开浏览器成功
+2018-01-20 16:51:24,446 - common_logic.py:57 - INFO - common_logic - add_customer - test data is : name customer_7897,phone 18982940319, email customer_7897@qq.com
+2018-01-20 16:51:41,894 - test_add_customer.py:20 - INFO - test_add_customer - tearDown - 关闭浏览器成功
+2018-01-20 16:51:41,911 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 
