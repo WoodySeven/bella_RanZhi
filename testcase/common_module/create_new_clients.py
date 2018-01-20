@@ -6,6 +6,8 @@ import random
 import ddt
 import logging
 from lib.utils import capture_screen
+from lib.common_logic import get_driver, login_by_admin
+from config import *
 
 
 class CreateNewClients(unittest.TestCase):
@@ -14,10 +16,7 @@ class CreateNewClients(unittest.TestCase):
     """
     def setUp(self):
         """开始打开谷歌浏览器"""
-        self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/ranzhi/www/sys/admin/"
-        driver = self.driver
+        self.driver = get_driver()
         logging.info("打开浏览器成功")
 
     def tearDown(self):
@@ -29,13 +28,8 @@ class CreateNewClients(unittest.TestCase):
         """新建客户测试用例"""
         logging.info("test_create_new_clients start....")
         driver = self.driver
-        driver.get(self.base_url)
-        driver.find_element_by_id("account").clear()
-        driver.find_element_by_id("account").send_keys("admin")
-        driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys("123456")
-        driver.find_element_by_id("submit").click()
-        driver.find_element_by_id("submit").click()
+        driver.get(ADMIN_PAGE)
+        login_by_admin(driver)
         time.sleep(3)
         ##点击所有应用，点击客户管理
         driver.find_element_by_xpath("//*[@id=\"s-menu-allapps\"]/button").click()

@@ -5,10 +5,13 @@ from selenium import webdriver
 import ddt
 import logging
 from lib.utils import capture_screen
+from config import *
+from lib.common_logic import get_driver, login_by_admin
 
-test_data = [['', '123456', '登陆失败'],
-             ['invalid', '123456', '登陆失败'],
+test_data = [['', '123456', '登录失败'],
+             ['invalid', '123456', '登录失败'],
              ['admin', '123456', '退出']]
+
 
 @ddt.ddt
 class Login(unittest.TestCase):
@@ -16,10 +19,7 @@ class Login(unittest.TestCase):
     RanZhi 用户登陆
     """
     def setUp(self):
-        self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/ranzhi/www/sys/admin/"
-        driver = self.driver
+        self.driver = get_driver()
 
     def tearDown(self):
         self.driver.quit()
@@ -27,24 +27,20 @@ class Login(unittest.TestCase):
     @ddt.unpack
     @ddt.data(*test_data)
     def test_user_login_test(self, admin, password, flag):
-        """admin的登录的所有测试用例"""
+        """admin的登录的所有测试用例
+        测试用例在讲一个故事：
+        1.条件是什么？
+        2.做了哪些操作？
+        3.出现了什么结果？
+        """
         logging.info("test_admin_login_test start....")
         driver = self.driver
-        driver.get(self.base_url)
-        driver.find_element_by_id("account").clear()
-        driver.find_element_by_id("account").send_keys(admin)
-        driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys(password)
-        driver.find_element_by_id("submit").click()
-        driver.find_element_by_id("submit").click()
+        driver.get(ADMIN_PAGE)
+        login_by_admin(driver)
         time.sleep(3)
         self.assertIn(flag, driver.page_source)
         logging.info("test data is : {}, {}, {}".format(admin, password, flag))
-        pic_path = capture_screen(driver)
-        if pic_path is None:
-            logging.error("截图不成功")
-        else:
-            logging.info(pic_path)
+        capture_screen(driver)
         logging.info("test_user_login_test end....")
 
     if __name__ == '__main__':
