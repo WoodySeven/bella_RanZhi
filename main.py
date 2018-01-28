@@ -18,7 +18,7 @@ from testcase.pageobject_demo.test_add_customer import CreateNewClients as PO
 
 
 if __name__ == '__main__':
-        logger = Logger('./log/logger.log', logging.INFO)
+        logger = Logger('./log/logger.log', logging.INFO) 
         logging.info("本次测试开始执行，以下是详细日志")
         if not os.path.exists("reports/"):
             os.makedirs("reports")
