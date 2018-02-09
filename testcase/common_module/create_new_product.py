@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 import unittest
-import time
-from selenium import webdriver
-import random
-import ddt
-import logging
-from lib.utils import capture_screen
+from lib.common_logic import *
+
 
 
 class CreateNewProduct(unittest.TestCase):
@@ -14,10 +10,7 @@ class CreateNewProduct(unittest.TestCase):
     """
     def setUp(self):
         """开始打开谷歌浏览器"""
-        self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/ranzhi/www/sys/admin/"
-        driver = self.driver
+        self.driver = get_driver()
         logging.info("打开浏览器成功")
 
     def tearDown(self):
@@ -26,48 +19,25 @@ class CreateNewProduct(unittest.TestCase):
         logging.info("关闭浏览器成功")
 
     def test_create_new_products(self):
-        """新建产品测试用例"""
+        """新建产品测试用例
+            执行步骤：
+        1.打开管理页面，登录
+        2.点击所有应用管理、产品
+        3.添加新产品
+        4.判断结果
+        """
         logging.info("test_create_new_products start....")
         driver = self.driver
-        driver.get(self.base_url)
-        driver.find_element_by_id("account").clear()
-        driver.find_element_by_id("account").send_keys("admin")
-        driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys("123456")
-        driver.find_element_by_id("submit").click()
-        driver.find_element_by_id("submit").click()
-        time.sleep(3)
-        ##点击所有应用，点击客户管理
-        driver.find_element_by_xpath("//*[@id=\"s-menu-allapps\"]/button").click()
-        time.sleep(3)
-        driver.find_element_by_xpath("//*[@id=\"s-applist-1\"]/a/img").click()
-        time.sleep(3)
-        ##进入ifarme
-        driver.switch_to.frame('iframe-1')
-        time.sleep(5)
-        ##新增产品
-        driver.find_element_by_link_text("产品").click()
-        time.sleep(5)
-        driver.find_element_by_xpath('//*[@id="menuActions"]/a').click()##点击新增产品
-        driver.find_element_by_id("name").send_keys(random.randint(1000, 9999))##输入名称
-        time.sleep(3)
-        ##输入产品
-        driver.find_element_by_id("code").send_keys( "{0}{1}".format(random.choice('abcdefghjklqwertyuiomnbvcxz'), random.randint(1000, 9999)))
-        time.sleep(3)
-        driver.find_element_by_id("line").click()##选择产品线
-        time.sleep(3)
-        driver.find_element_by_id("type").click()##选择类型
-        driver.find_element_by_xpath('//*[@id="type"]/option[2]').click()
-        driver.find_element_by_id("status").click()##选择状态
-        driver.find_element_by_xpath('//*[@id="status"]/option[2]').click()
-        driver.find_element_by_id('submit').click()##点击保存
-        time.sleep(3)
+        driver.get(ADMIN_PAGE)
+        login_by_admin(driver)
+        click_all_apps(driver)
+        click_crm_btn(driver)
+        add_product(driver)
         logging.info("test data is : {},{}".format('admin', '123456'))
-        pic_path = capture_screen(driver)
-        if pic_path is None:
-            logging.error("截图不成功")
-        else:
-            logging.info(pic_path)
+        # 对浏览器截屏
+        capture_screen(driver)
+        # 用例要设置检查点
+        self.assertIn('www/crm/product-browse.html', driver.current_url)
         logging.info("test_create_new_products end....")
 
 if __name__ == '__main__':

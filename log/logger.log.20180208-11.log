@@ -1,0 +1,7 @@
+2018-02-08 11:58:35,805 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-02-08 11:58:40,148 - cash_expenditure.py:19 - INFO - cash_expenditure - setUp - 打开浏览器成功
+2018-02-08 11:58:40,148 - cash_expenditure.py:34 - INFO - cash_expenditure - test_cash_expenditure - test_cash_expenditure start....
+2018-02-08 11:59:04,817 - cash_expenditure.py:40 - INFO - cash_expenditure - test_cash_expenditure - test data is : admin,123456
+2018-02-08 11:59:05,116 - cash_expenditure.py:46 - INFO - cash_expenditure - test_cash_expenditure - test_create_member end....
+2018-02-08 11:59:08,472 - cash_expenditure.py:24 - INFO - cash_expenditure - tearDown - 关闭浏览器成功
+2018-02-08 11:59:08,473 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 

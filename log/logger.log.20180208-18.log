@@ -1,0 +1,14 @@
+2018-02-08 18:22:02,494 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-02-08 18:22:16,163 - create_new_product.py:14 - INFO - create_new_product - setUp - 打开浏览器成功
+2018-02-08 18:22:16,164 - create_new_product.py:29 - INFO - create_new_product - test_create_new_products - test_create_new_products start....
+2018-02-08 18:23:00,415 - create_new_product.py:36 - INFO - create_new_product - test_create_new_products - test data is : admin,123456
+2018-02-08 18:23:00,801 - create_new_product.py:41 - INFO - create_new_product - test_create_new_products - test_create_new_products end....
+2018-02-08 18:23:03,832 - create_new_product.py:19 - INFO - create_new_product - tearDown - 关闭浏览器成功
+2018-02-08 18:23:03,833 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-02-08 18:25:18,398 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-02-08 18:25:23,190 - create_new_product.py:14 - INFO - create_new_product - setUp - 打开浏览器成功
+2018-02-08 18:25:23,190 - create_new_product.py:29 - INFO - create_new_product - test_create_new_products - test_create_new_products start....
+2018-02-08 18:26:07,742 - create_new_product.py:36 - INFO - create_new_product - test_create_new_products - test data is : admin,123456
+2018-02-08 18:26:08,055 - create_new_product.py:41 - INFO - create_new_product - test_create_new_products - test_create_new_products end....
+2018-02-08 18:26:11,308 - create_new_product.py:19 - INFO - create_new_product - tearDown - 关闭浏览器成功
+2018-02-08 18:26:11,309 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 

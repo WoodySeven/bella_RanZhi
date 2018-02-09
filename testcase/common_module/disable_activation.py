@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 import unittest
-import time
-from selenium import webdriver
-import random
-import logging
-from lib.utils import capture_screen
+from lib.common_logic import *
 
 
 class DisableActivation(unittest.TestCase):
@@ -14,10 +10,7 @@ class DisableActivation(unittest.TestCase):
 
     def setUp(self):
         """开始打开谷歌浏览器"""
-        self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/ranzhi/www/sys/admin/"
-        driver = self.driver
+        self.driver = get_driver()
         logging.info("打开浏览器成功")
 
     def tearDown(self):
@@ -26,39 +19,26 @@ class DisableActivation(unittest.TestCase):
         logging.info("关闭浏览器成功")
 
     def test_disable_activation(self):
-        """禁用成员、激活成员测试用例"""
+        """禁用成员、激活成员测试用例
+        执行步骤：
+        1.打开管理页面，登录
+        2.点击后台管理
+        3.添加成员、点击部门、禁用激活成员
+        4.判断结果 
+        """
         logging.info("test_create_member start....")
         driver = self.driver
-        driver.get(self.base_url)
-        driver.find_element_by_id("account").clear()
-        driver.find_element_by_id("account").send_keys("admin")
-        driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys("123456")
-        driver.find_element_by_id("submit").click()
-        driver.find_element_by_id("submit").click()
-        time.sleep(3)
-        ##点击后台管理
-        driver.find_element_by_xpath('//*[@id="s-menu-superadmin"]/button').click()
-        time.sleep(3)
-        ##进入ifarme
-        driver.switch_to.frame('iframe-superadmin')
-        time.sleep(5)
-        ##点击添加成员
-        driver.find_element_by_xpath('//*[@id="shortcutBox"]/div/div[1]/div/a/h3').click()
-        ##选择研发部门
-        driver.find_element_by_xpath('//*[@id="category5"]').click()
-        ###禁用成员
-        driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/table/tbody/tr[2]/td[11]/a[2]').click()
-        time.sleep(5)
-        ###激活成员
-        driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/table/tbody/tr[2]/td[11]/a[2]').click()
-        time.sleep(5)
+        driver.get(ADMIN_PAGE)
+        login_by_admin(driver)
+        click_backend_management(driver)
+        click_member_btn(driver)
+        click_division_btn(driver)
+        member(driver)
         logging.info("test data is : {},{}".format('admin', '123456'))
-        pic_path = capture_screen(driver)
-        if pic_path is None:
-            logging.error("截图不成功")
-        else:
-            logging.info(pic_path)
+        # 对浏览器截屏
+        capture_screen(driver)
+        # 用例要设置检查点
+        self.assertIn('www/sys/user-admin-5.html', driver.current_url)
         logging.info("test_MemberConfiguration_test end....")
 
 

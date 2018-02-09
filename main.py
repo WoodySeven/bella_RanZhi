@@ -27,16 +27,15 @@ if __name__ == '__main__':
         try:
             suite = unittest.TestSuite()  # 新建一个suite，测试套件
             loader = unittest.TestLoader()  # 新建一个加载器，自定义的方式把测试用例加载到suite里
-            # suite.addTests(loader.loadTestsFromTestCase(Login))#把测试类登陆方法加载到suite里
-            # suite.addTests(loader.loadTestsFromTestCase(CreateNewClients))#把测试类新增客户方法加载到suite里
-            # suite.addTests(loader.loadTestsFromTestCase(CreateNewProduct))#把测试类新增产品方法加载到suite里
-            # suite.addTests(loader.loadTestsFromTestCase(CreateNewOrder))#把测试类新增订单方法加载到suite里
+            #suite.addTests(loader.loadTestsFromTestCase(Login))#把测试类登陆方法加载到suite里
+            #suite.addTests(loader.loadTestsFromTestCase(CreateNewClients))#把测试类新增客户方法加载到suite里
+            #suite.addTests(loader.loadTestsFromTestCase(CreateNewProduct))#把测试类新增产品方法加载到suite里
+            #suite.addTests(loader.loadTestsFromTestCase(CreateNewOrder))#把测试类新增订单方法加载到suite里
             # suite.addTests(loader.loadTestsFromTestCase(CreateMember))#把测试类新加成员方法加载到suite里
-            # suite.addTests(loader.loadTestsFromTestCase(DisableActivation))# 把测试类禁用、激活成员方法加载到suite里
+            suite.addTests(loader.loadTestsFromTestCase(DisableActivation))# 把测试类禁用、激活成员方法加载到suite里
             # suite.addTests(loader.loadTestsFromTestCase(CashExpenditure))#把测试类现金记账支出方法加载到suite里
             # suite.addTests(loader.loadTestsFromTestCase(CashIncome))#把测试类现金记账收入方法加载到suite里
             # unittest.TextTestRunner(verbosity=2).run(suite) # unittest运行suite
-            suite.addTests(loader.loadTestsFromTestCase(PO))
 
             fp = open('reports/ranzhi{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
             runner = HTMLTestRunner.HTMLTestRunner(

@@ -41,6 +41,31 @@ def click_crm_btn(driver):
     time.sleep(3)
 
 
+def click_member_btn(driver):
+    """点击添加成员"""
+    switch_to_frame(driver, 'iframe-superadmin')
+    driver.find_element_by_xpath('//*[@id="shortcutBox"]/div/div[1]/div/a/h3').click()
+
+
+def click_division_btn(driver):
+    """选择研发部门"""
+    driver.find_element_by_xpath('//*[@id="category5"]').click()
+
+
+def member(driver):
+    """禁用成员、激活成员"""
+    driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/table/tbody/tr[2]/td[11]/a[2]').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/table/tbody/tr[2]/td[11]/a[2]').click()
+    time.sleep(3)
+
+
+def click_cash_account_btn(driver):
+    """点击现金记账"""
+    driver.find_element_by_xpath('//*[@id="s-menu-3"]/button').click()
+    time.sleep(3)
+
+
 def switch_to_frame(driver, frame_name='iframe-1'):
     ##进入ifarme
     driver.switch_to.frame(frame_name)
@@ -103,3 +128,128 @@ def add_member(driver):
     driver.find_element_by_id('submit').click()  ##点击保存
     time.sleep(6)
     return {"name": name, "email": email}
+
+
+def add_expenditure(driver):
+    """添加记支出"""
+    money = get_random_money()
+    #进入ifarme
+    switch_to_frame(driver, 'iframe-3')
+    #点击支出按钮
+    driver.find_element_by_xpath('//*[@id="mainNavbar"]/div[2]/ul/li[4]/a').click()
+    #点击记支出按钮
+    driver.find_element_by_xpath('//*[@id="menuActions"]/a[2]').click()
+    ##选择账号
+    driver.find_element_by_id('depositor').click()
+    driver.find_element_by_xpath('//*[@id="depositor"]/option[2]').click()
+    ##选择科目
+    driver.find_element_by_id('category').click()
+    driver.find_element_by_xpath('//*[@id="category"]/option[2]').click()
+    ##选择订单支出
+    driver.find_element_by_id('objectType2').click()
+    time.sleep(2)
+    ##选择订单
+    driver.find_element_by_xpath('//*[@id="order_chosen"]/a').click()
+    driver.find_element_by_xpath('//*[@id="order_chosen"]/div/ul/li[1]').click()
+    time.sleep(2)
+    ##清空金额
+    driver.find_element_by_id('money').clear()
+    ##输入金额
+    driver.find_element_by_id('money').send_keys(money)
+    ##选择经手人
+    driver.find_element_by_xpath('//*[@id="handlers_chosen"]/ul').click()
+    driver.find_element_by_xpath('//*[@id="handlers_chosen"]/div/ul/li[1]').click()
+    ##输入说明
+    driver.find_element_by_id('desc').send_keys('我们我们啊哈哈')
+    ##点击保存按钮
+    driver.find_element_by_id('submit').click()
+    time.sleep(3)
+    return {"money": money}
+
+
+def add_income(driver):
+    """添加记收入"""
+    money = get_random_money()
+    ##进入ifarme
+    switch_to_frame(driver, 'iframe-3')
+    time.sleep(5)
+    ##点击收入
+    driver.find_element_by_xpath('//*[@id="mainNavbar"]/div[2]/ul/li[3]/a').click()
+    time.sleep(5)
+    ##点击记收入
+    driver.find_element_by_xpath('//*[@id="menuActions"]/a[2]').click()
+    driver.find_element_by_id('depositor').click()  ##选择账号
+    driver.find_element_by_xpath('//*[@id="depositor"]/option[2]').click()
+    driver.find_element_by_id('category').click()  ##选择科目
+    driver.find_element_by_xpath('//*[@id="category"]/option[2]').click()  ##选择客户
+    driver.find_element_by_xpath('//*[@id="trader_chosen"]/a').click()
+    driver.find_element_by_xpath('//*[@id="trader_chosen"]/div/ul/li[1]').click()  ##选择合同
+    time.sleep(2)
+    driver.find_element_by_id('money').send_keys(money)  ##输入金额
+    time.sleep(2)
+    driver.find_element_by_xpath('//*[@id="handlers_chosen"]/ul').click()  ##选择经手人
+    driver.find_element_by_xpath('//*[@id="handlers_chosen"]/div/ul/li[1]').click()
+    time.sleep(2)
+    driver.find_element_by_xpath('//*[@id="product_chosen"]/a').click()  ##选择产品
+    time.sleep(5)
+    driver.find_element_by_xpath('//*[@id="product_chosen"]/div/ul/li[1]').click()
+    time.sleep(5)
+    driver.find_element_by_id('date').click()  ##选择时间
+    driver.find_element_by_xpath('/html/body/div[2]/div[3]/table/thead/tr[1]/th[2]').click()
+    driver.find_element_by_xpath('/html/body/div[2]/div[4]/table/thead/tr/th[1]/i').click()
+    driver.find_element_by_xpath('/html/body/div[2]/div[4]/table/tbody/tr/td/span[5]').click()
+    driver.find_element_by_xpath('/html/body/div[2]/div[3]/table/tbody/tr[3]/td[4]').click()
+    time.sleep(5)
+    driver.find_element_by_id('desc').send_keys('白日依山尽，黄河入海流')  ##输入说明
+    time.sleep(2)
+    driver.find_element_by_id('submit').click()  ##保存
+    return {"money": money}
+
+def add_order(driver):
+    """新增订单"""
+    money = get_random_money()
+    ##进入iframe
+    switch_to_frame(driver, 'iframe-1')
+    time.sleep(5)
+    ##新增订单
+    driver.find_element_by_link_text("订单").click()
+    time.sleep(5)
+    driver.find_element_by_xpath('//*[@id="menuActions"]/a').click()  ##创建订单
+    driver.find_element_by_xpath('//*[@id="customer_chosen"]/a').click()  ##选择客户
+    driver.find_element_by_xpath('//*[@id="customer_chosen"]/div/ul/li[3]').click()
+    time.sleep(2)
+    driver.find_element_by_xpath('//*[@id="product_chosen"]/ul').click()  ##选择产品
+    time.sleep(3)
+    driver.find_element_by_xpath('//*[@id="product_chosen"]/div/ul/li[3]').click()
+    driver.find_element_by_id('plan').send_keys(money)  ##输入计划金额
+    time.sleep(5)
+    driver.find_element_by_id('submit').click()  ##点击保存
+    time.sleep(5)
+    return {"money": money}
+
+
+def add_product(driver):
+    """新增产品"""
+    name = get_random_money()
+    name1 = get_random_product_name()
+
+    ##进入ifarme
+    switch_to_frame(driver, 'iframe-1')
+    time.sleep(5)
+    ##新增产品
+    driver.find_element_by_link_text("产品").click()
+    time.sleep(5)
+    driver.find_element_by_xpath('//*[@id="menuActions"]/a').click()  ##点击新增产品
+    driver.find_element_by_id("name").send_keys(name)  ##输入名称
+    time.sleep(3)
+    ##输入产品
+    driver.find_element_by_id("code").send_keys(name1)
+    time.sleep(3)
+    driver.find_element_by_id("line").click()  ##选择产品线
+    time.sleep(3)
+    driver.find_element_by_id("type").click()  ##选择类型
+    driver.find_element_by_xpath('//*[@id="type"]/option[2]').click()
+    driver.find_element_by_id("status").click()  ##选择状态
+    driver.find_element_by_xpath('//*[@id="status"]/option[2]').click()
+    driver.find_element_by_id('submit').click()  ##点击保存
+    time.sleep(3)

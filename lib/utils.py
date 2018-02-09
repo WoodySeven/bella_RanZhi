@@ -44,6 +44,17 @@ def get_random_customer_name():
     return name
 
 
+def get_random_product_name():
+    """生成随机的产品名称"""
+    name = "cus{}".format(random.randint(1000, 9999))
+    return name
+
+def get_random_money():
+    """生成随机的金额"""
+    name = random.randint(1000, 9999)
+    return name
+
+
 def get_random_string(k=8):
     """生成随机的字符串，并返回"""
     population = 'abcdefghjklqwertyuiomnbvcxz0123456789'
@@ -62,4 +73,4 @@ def get_random_phone():
 
 if __name__ == "__main__":
     # print(get_random_phone())
-    print(get_random_string())
+    print(get_random_money())

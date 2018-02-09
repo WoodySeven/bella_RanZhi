@@ -1,0 +1,18 @@
+2018-02-08 14:58:25,759 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-02-08 14:58:32,401 - cash_income.py:13 - INFO - cash_income - setUp - 打开浏览器成功
+2018-02-08 14:58:32,402 - cash_income.py:28 - INFO - cash_income - test_cash_income - test_cash_income start....
+2018-02-08 14:59:20,240 - cash_income.py:34 - INFO - cash_income - test_cash_income - test data is : admin,123456
+2018-02-08 14:59:23,603 - cash_income.py:18 - INFO - cash_income - tearDown - 关闭浏览器成功
+2018-02-08 14:59:23,604 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-02-08 15:50:26,798 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-02-08 15:50:31,729 - cash_income.py:13 - INFO - cash_income - setUp - 打开浏览器成功
+2018-02-08 15:50:31,730 - cash_income.py:28 - INFO - cash_income - test_cash_income - test_cash_income start....
+2018-02-08 15:50:35,772 - cash_income.py:18 - INFO - cash_income - tearDown - 关闭浏览器成功
+2018-02-08 15:50:35,776 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 
+2018-02-08 16:00:14,795 - main.py:22 - INFO - main - <module> - 本次测试开始执行，以下是详细日志
+2018-02-08 16:00:19,224 - create_new_order.py:14 - INFO - create_new_order - setUp - 打开浏览器成功
+2018-02-08 16:00:19,224 - create_new_order.py:29 - INFO - create_new_order - test_create_new_order - test_create_new_order start....
+2018-02-08 16:01:03,878 - create_new_order.py:36 - INFO - create_new_order - test_create_new_order - test data is : admin,123456
+2018-02-08 16:01:04,181 - create_new_order.py:41 - INFO - create_new_order - test_create_new_order - test_create_new_order end....
+2018-02-08 16:01:07,330 - create_new_order.py:19 - INFO - create_new_order - tearDown - 关闭浏览器成功
+2018-02-08 16:01:07,331 - main.py:48 - INFO - main - <module> - 测试顺利结束^_^ 

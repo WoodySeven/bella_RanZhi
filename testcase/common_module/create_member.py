@@ -32,7 +32,9 @@ class CreateMember(unittest.TestCase):
         click_backend_management(driver)
         ret_val = add_member(driver)
         logging.info("test data is : {},{}".format('admin', '123456'))
+        # 对浏览器截屏
         capture_screen(driver)
+        # 用例要设置检查点
         self.assertIn(ret_val['name'], driver.page_source)
         self.assertIn('www/sys/user-admin.html', driver.current_url)
         logging.info("test_create_member end....")
